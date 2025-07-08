@@ -4,7 +4,7 @@ A NextJs chat application that allows users to interact with AI models including
 
 ## Live Demo
 
-The application is deployed and available at: [[https://ai-model-chat-api.vercel.app](https://ai-model-chat-api.vercel.app)](https://nextjs-ai-models-chat-api.vercel.app)
+The application is deployed and available at: https://nextjs-ai-models-chat-api.vercel.app
 
 ## Features
 
