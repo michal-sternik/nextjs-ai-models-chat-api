@@ -1,0 +1,38 @@
+{
+  "MainPage": {
+    "title": "AI Models API Chat",
+    "description": "Chat with AI models using Gemini and Mistral APIs",
+    "startConversation": "Start a conversation",
+    "askQuestion": "Ask a question or upload a file to begin chatting with AI",
+    "typeMessage": "Type your message...",
+    "attachFile": "Attach a file",
+    "sendMessage": "Send message",
+    "clearChat": "Clear entire chat",
+    "removeFile": "Remove attached file",
+    "context": "Context",
+    "messages": "messages",
+    "contextTooltip": "Adjust how many previous messages to include in context",
+    "tokensUsed": "Tokens Used",
+    "resetTokens": "Reset token counter",
+    "botGenerating": "Bot is generating response...",
+    "you": "You",
+    "aiAssistant": "AI Assistant",
+    "input": "Input",
+    "output": "Output",
+    "total": "Total",
+    "fileSupports": "Supports",
+    "fileSupportsImages": "Images, DOCX, PPTX, EPUB, RTF, ODT, BibTeX, EndNote, Jupyter, LaTeX, OPML, Troff, DokuWiki",
+    "fileSupportsJsonl": "JSONL",
+    "language": "Language"
+  },
+  "Models": {
+    "gemini": "Gemini 2.5 Flash",
+    "geminiDescription": "Fast and efficient AI model",
+    "mistral": "Mistral 3.2 Small",
+    "mistralDescription": "Compact and powerful model"
+  },
+  "Languages": {
+    "en": "English",
+    "pl": "Polish"
+  }
+}
