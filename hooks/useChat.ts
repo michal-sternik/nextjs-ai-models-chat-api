@@ -9,6 +9,7 @@ import type { BotMessage, Message } from "../types/types";
 import { generateId } from "../lib/utils/generateId";
 import { SAVE_MAX_MESSAGES } from "../settings";
 import { sendMistralMessage } from "@/services/mistralService";
+import { useTranslations } from "next-intl";
 
 export const useChat = (selectedModel: string) => {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -19,11 +20,20 @@ export const useChat = (selectedModel: string) => {
     numberOfPreviousMessagesAttached,
     setNumberOfPreviousMessagesAttached,
   ] = useState<number>(SAVE_MAX_MESSAGES);
-
+  const t = useTranslations("ChatbotWidget");
   useEffect(() => {
     const savedMessages = localStorage.getItem(`chatMessages-${selectedModel}`);
     if (savedMessages) {
       setMessages(JSON.parse(savedMessages));
+    } else if (selectedModel.startsWith("chatbot-")) {
+      // Add welcome message for chatbot
+      const welcomeMessage = {
+        id: `welcome-${Date.now()}`,
+        sender: "bot" as const,
+        text: t("conversationPlaceholder"),
+        timestamp: Date.now(),
+      };
+      setMessages([welcomeMessage]);
     }
   }, [selectedModel]);
 

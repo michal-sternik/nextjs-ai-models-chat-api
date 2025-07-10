@@ -7,6 +7,7 @@ import Input from "../Input/Input";
 import { useChat } from "../../hooks/useChat";
 import HeaderBar from "../HeaderBar/HeaderBar";
 import { Card } from "@/components/ui/card";
+import ChatbotWidget from "../ChatbotWidget/ChatbotWidget";
 
 function RootLayout() {
   const [selectedModel, setSelectedModel] = useState("mistral-3.2-small");
@@ -37,7 +38,7 @@ function RootLayout() {
 
   return (
     <div className="max-w-4xl mx-auto h-[calc(100vh-2rem)]">
-      <Card className="h-full bg-slate-900/80 border-blue-500/30 shadow-2xl backdrop-blur-sm">
+      <Card className="h-full relative bg-slate-900/80 border-blue-500/30 shadow-2xl ">
         <div className="flex flex-col h-full p-6 gap-6">
           <HeaderBar
             numberOfPreviousMessagesAttached={numberOfPreviousMessagesAttached}
@@ -78,6 +79,7 @@ function RootLayout() {
           />
         </div>
       </Card>
+      <ChatbotWidget />
     </div>
   );
 }

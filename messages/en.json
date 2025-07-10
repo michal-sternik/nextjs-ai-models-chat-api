@@ -34,5 +34,15 @@
   "Languages": {
     "en": "English",
     "pl": "Polish"
+  },
+  "ChatbotWidget": {
+    "title": "AI Assistant",
+    "status": "Online",
+    "close": "Close Chatbot",
+    "open": "Open Chatbot",
+    "conversationPlaceholder": "Hello! How can I help you today?",
+    "sendMessage": "Send Message",
+    "attachFile": "Attach a file",
+    "messagePlaceholder": "Type your message... "
   }
 }

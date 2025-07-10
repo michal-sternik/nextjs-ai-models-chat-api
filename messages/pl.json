@@ -34,5 +34,15 @@
   "Languages": {
     "en": "Angielski",
     "pl": "Polski"
+  },
+  "ChatbotWidget": {
+    "title": "Asystent AI",
+    "status": "Dostępny",
+    "close": "Zamknij chatbota",
+    "open": "Otwórz chatbota",
+    "conversationPlaceholder": "Cześć! Jak mogę Ci dzisiaj pomóc?",
+    "sendMessage": "Wyślij wiadomość",
+    "attachFile": "Załącz plik",
+    "messagePlaceholder": "Wpisz swoją wiadomość... "
   }
 }

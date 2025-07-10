@@ -82,7 +82,7 @@ const Input = ({
           </div>
         )}
 
-        <div className="flex items-center gap-2 p-2 bg-slate-800/50 backdrop-blur-sm rounded-xl border border-blue-500/20">
+        <div className="flex items-center gap-2 p-2 bg-slate-800/50  rounded-xl border border-blue-500/20">
           <UIInput
             value={input}
             onChange={(e) => setInput(e.target.value)}
