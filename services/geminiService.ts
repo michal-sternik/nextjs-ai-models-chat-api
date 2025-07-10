@@ -6,6 +6,7 @@ import {
   GEMINI_TEMPERATURE,
   GEMINI_MAX_TOKENS,
 } from "@/settings";
+import { isBot } from "@/lib/utils";
 
 const ai = new GoogleGenAI({
   apiKey: process.env.NEXT_PUBLIC_GEMINI_API_KEY!,
@@ -50,8 +51,9 @@ export const sendGeminiMessage = async (
         name: sanitizedFileName,
       },
     });
+
     const contextParts = recentMessages.map((msg) => ({
-      role: msg.sender === "bot" ? "model" : msg.sender,
+      role: isBot(msg.sender) ? "model" : msg.sender,
       parts: [{ text: msg.text }],
     }));
 
@@ -72,7 +74,7 @@ export const sendGeminiMessage = async (
     const fullMessages = [...recentMessages, { text: input, sender: "user" }];
 
     contents = fullMessages.map((msg) => ({
-      role: msg.sender === "bot" ? "model" : msg.sender,
+      role: isBot(msg.sender) ? "model" : msg.sender,
       parts: [{ text: msg.text }],
     }));
   }

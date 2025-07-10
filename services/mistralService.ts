@@ -6,6 +6,7 @@ import {
   MISTRAL_MAX_TOKENS,
   MISTRAL_FILE_PURPOSE,
 } from "@/settings";
+import { isBot } from "@/lib/utils";
 
 const client = new Mistral({
   apiKey: process.env.NEXT_PUBLIC_MISTRAL_API_KEY!,
@@ -23,7 +24,7 @@ export const sendMistralMessage = async (
       : [];
 
   const conversationHistory = recentMessages.map((msg) =>
-    msg.sender === "bot"
+    isBot(msg.sender)
       ? { role: "assistant" as const, content: msg.text }
       : { role: "user" as const, content: msg.text }
   );

@@ -8,6 +8,7 @@ import TokenInfo from "../TokenInfo/TokenInfo";
 import { Card } from "@/components/ui/card";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { User, Bot } from "lucide-react";
+import { isUser, isBot } from "@/lib/utils";
 
 const Conversation = ({ messages }: { messages: Message[] }) => {
   const endRef = useRef<HTMLDivElement>(null);
@@ -30,23 +31,22 @@ const Conversation = ({ messages }: { messages: Message[] }) => {
       </div>
     );
   }
-
   return (
     <div className="flex-1 overflow-y-auto space-y-4 pr-2 custom-scroll">
       {messages.map((msg) => (
         <div
           key={msg.id}
           className={`flex gap-3 ${
-            msg.sender === "user" ? "flex-row-reverse" : "flex-row"
+            isUser(msg.sender) ? "flex-row-reverse" : "flex-row"
           }`}
         >
           <Avatar
             className={`size-8 ${
-              msg.sender === "user" ? "bg-blue-600" : "bg-slate-600"
+              isUser(msg.sender) ? "bg-blue-600" : "bg-slate-600"
             }`}
           >
             <AvatarFallback className="text-white bg-transparent">
-              {msg.sender === "user" ? (
+              {isUser(msg.sender) ? (
                 <User className="size-4" />
               ) : (
                 <Bot className="size-4" />
@@ -56,12 +56,12 @@ const Conversation = ({ messages }: { messages: Message[] }) => {
 
           <div
             className={`flex-1 max-w-[80%] ${
-              msg.sender === "user" ? "text-right" : "text-left"
+              isUser(msg.sender) ? "text-right" : "text-left"
             }`}
           >
             <Card
               className={`p-4 ${
-                msg.sender === "user"
+                isUser(msg.sender)
                   ? "bg-blue-600/20 border-blue-500/30 ml-auto"
                   : "bg-slate-700/20 border-slate-500/30"
               }`}
@@ -69,7 +69,7 @@ const Conversation = ({ messages }: { messages: Message[] }) => {
               <div className="space-y-2">
                 <div className="flex items-center gap-2 text-xs text-white/60">
                   <span className="font-medium">
-                    {msg.sender === "user" ? t("you") : t("aiAssistant")}
+                    {isUser(msg.sender) ? t("you") : t("aiAssistant")}
                   </span>
                   <span>•</span>
                   <span>
@@ -80,14 +80,14 @@ const Conversation = ({ messages }: { messages: Message[] }) => {
                 </div>
 
                 <div className="text-white/90">
-                  {msg.sender === "bot" ? (
+                  {isBot(msg.sender) ? (
                     <ReactMarkdown>{msg.text}</ReactMarkdown>
                   ) : (
                     <p className="whitespace-pre-wrap">{msg.text}</p>
                   )}
                 </div>
 
-                {msg.sender === "bot" &&
+                {isBot(msg.sender) &&
                   (msg as BotMessage).totalTokenCount !== undefined && (
                     <TokenInfo {...(msg as BotMessage)} />
                   )}
