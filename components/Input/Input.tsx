@@ -28,8 +28,8 @@ interface InputProps {
   clearChat: () => void;
   selectedModel: string;
   isLoading?: boolean;
-  file?: File | null;
-  handleFileSelection: (file: File | null) => void;
+  file?: File;
+  handleFileSelection: (file: File | undefined) => void;
 }
 
 const Input = ({
@@ -40,11 +40,11 @@ const Input = ({
   file,
   handleFileSelection,
 }: InputProps) => {
-  const [input, setInput] = useState<string>("");
+  const [input, setInput] = useState("");
   const t = useTranslations("MainPage");
 
   const handleSend = () => {
-    sendMessage(input, setInput, file || undefined, selectedModel);
+    sendMessage(input, setInput, file, selectedModel);
   };
 
   return (
@@ -53,7 +53,7 @@ const Input = ({
         {file && (
           <div className="flex items-center justify-between p-3 bg-blue-500/20 border border-blue-500/30 rounded-lg">
             <div className="flex items-center gap-2">
-              <Paperclip className="w-4 h-4 text-blue-400" />
+              <Paperclip className="size-4 text-blue-400" />
               <span className="text-blue-200 text-sm font-medium">
                 {file.name}
               </span>
@@ -67,12 +67,12 @@ const Input = ({
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button
-                  onClick={() => handleFileSelection(null)}
+                  onClick={() => handleFileSelection(undefined)}
                   size="sm"
                   variant="ghost"
                   className="text-blue-400 hover:text-blue-300 hover:bg-blue-500/20 h-6 w-6 p-0"
                 >
-                  <X className="w-4 h-4" />
+                  <X className="size-4" />
                 </Button>
               </TooltipTrigger>
               <TooltipContent>
@@ -123,7 +123,7 @@ const Input = ({
                     asChild
                   >
                     <span className="cursor-pointer">
-                      <Paperclip className="w-4 h-4" />
+                      <Paperclip className="size-4" />
                     </span>
                   </Button>
                 </label>
@@ -153,7 +153,7 @@ const Input = ({
                   disabled={isLoading || (!input.trim() && !file)}
                   className="bg-blue-600 hover:bg-blue-700 text-white"
                 >
-                  <Send className="w-4 h-4" />
+                  <Send className="size-4" />
                 </Button>
               </TooltipTrigger>
               <TooltipContent>
@@ -170,7 +170,7 @@ const Input = ({
                   disabled={isLoading}
                   className="bg-red-500/20 hover:bg-red-500/30 border border-red-500/30"
                 >
-                  <Trash2 className="w-4 h-4" />
+                  <Trash2 className="size-4" />
                 </Button>
               </TooltipTrigger>
               <TooltipContent>

@@ -9,11 +9,7 @@ import { Card } from "@/components/ui/card";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { User, Bot } from "lucide-react";
 
-interface ConversationProps {
-  messages: Message[];
-}
-
-const Conversation = ({ messages }: ConversationProps) => {
+const Conversation = ({ messages }: { messages: Message[] }) => {
   const endRef = useRef<HTMLDivElement>(null);
   const t = useTranslations("MainPage");
 
@@ -45,15 +41,15 @@ const Conversation = ({ messages }: ConversationProps) => {
           }`}
         >
           <Avatar
-            className={`w-8 h-8 ${
+            className={`size-8 ${
               msg.sender === "user" ? "bg-blue-600" : "bg-slate-600"
             }`}
           >
             <AvatarFallback className="text-white bg-transparent">
               {msg.sender === "user" ? (
-                <User className="w-4 h-4" />
+                <User className="size-4" />
               ) : (
-                <Bot className="w-4 h-4" />
+                <Bot className="size-4" />
               )}
             </AvatarFallback>
           </Avatar>

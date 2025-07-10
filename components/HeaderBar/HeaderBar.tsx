@@ -115,7 +115,7 @@ const HeaderBar = ({
                   variant="destructive"
                   className="bg-red-500/20 hover:bg-red-500/30 border border-red-500/30"
                 >
-                  <RotateCcw className="w-4 h-4" />
+                  <RotateCcw className="size-4" />
                 </Button>
               </TooltipTrigger>
               <TooltipContent>

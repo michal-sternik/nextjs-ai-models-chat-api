@@ -32,7 +32,7 @@ const LanguageSelector = () => {
             size="sm"
             className="text-white/80 hover:text-white hover:bg-blue-500/20 gap-1"
           >
-            <Languages className="w-4 h-4" />
+            <Languages className="size-4" />
             <span className="hidden sm:inline">{t(locale as "en" | "pl")}</span>
             <ChevronDown className="w-3 h-3" />
           </Button>

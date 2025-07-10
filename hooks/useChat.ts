@@ -14,7 +14,7 @@ export const useChat = (selectedModel: string) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const isInitialLoad = useRef(true);
-  const [file, setFile] = useState<File | null>(null);
+  const [file, setFile] = useState<File | undefined>(undefined);
   const [
     numberOfPreviousMessagesAttached,
     setNumberOfPreviousMessagesAttached,
@@ -46,6 +46,7 @@ export const useChat = (selectedModel: string) => {
     file?: File,
     selectedModel?: string
   ) => {
+    console.log("Sending message:", input, file, selectedModel);
     if ((!input.trim() && !file) || isLoading) return;
     setIsLoading(true);
     setInput("");
@@ -67,14 +68,14 @@ export const useChat = (selectedModel: string) => {
           messages,
           input,
           numberOfPreviousMessagesAttached,
-          file || undefined
+          file
         );
       } else if (selectedModel === "gemini-2.5-flash") {
         botMsg = await sendGeminiMessage(
           messages,
           input,
           numberOfPreviousMessagesAttached,
-          file || undefined
+          file
         );
       }
 
@@ -104,13 +105,13 @@ export const useChat = (selectedModel: string) => {
 
   const clearChat = () => {
     setMessages([]);
-    setFile(null);
+    setFile(undefined);
     localStorage.removeItem(`chatMessages-${selectedModel}`);
     deleteAllGeminiFiles();
     setNumberOfPreviousMessagesAttached(SAVE_MAX_MESSAGES);
   };
 
-  const handleFileSelection = (selectedFile: File | null) => {
+  const handleFileSelection = (selectedFile: File | undefined) => {
     setFile(selectedFile);
   };
 
