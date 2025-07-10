@@ -46,7 +46,6 @@ export const useChat = (selectedModel: string) => {
     file?: File,
     selectedModel?: string
   ) => {
-    console.log("Sending message:", input, file, selectedModel);
     if ((!input.trim() && !file) || isLoading) return;
     setIsLoading(true);
     setInput("");
@@ -81,7 +80,7 @@ export const useChat = (selectedModel: string) => {
 
       setMessages((msgs) => [...msgs, botMsg]);
       if (file) {
-        handleFileSelection(null);
+        handleFileSelection(undefined);
       }
       localStorage.setItem(
         `totalTokenCount-${selectedModel}`,
