@@ -83,7 +83,7 @@ const Conversation = ({ messages }: { messages: Message[] }) => {
                   {isBot(msg.sender) ? (
                     <ReactMarkdown>{msg.text}</ReactMarkdown>
                   ) : (
-                    <p className="whitespace-pre-wrap">{msg.text}</p>
+                    <p className="whitespace-pre-wrap text-left">{msg.text}</p>
                   )}
                 </div>
 
