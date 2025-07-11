@@ -5,7 +5,6 @@ import { Slider } from "@/components/ui/slider";
 import {
   Tooltip,
   TooltipContent,
-  TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { useTranslations } from "next-intl";
