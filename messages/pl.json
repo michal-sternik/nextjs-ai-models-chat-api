@@ -1,0 +1,38 @@
+{
+  "MainPage": {
+    "title": "Chat z modelami AI",
+    "description": "Rozmawiaj z modelami AI używając Gemini i Mistral API",
+    "startConversation": "Rozpocznij rozmowę",
+    "askQuestion": "Zadaj pytanie lub prześlij plik, aby rozpocząć chat z AI",
+    "typeMessage": "Wpisz swoją wiadomość...",
+    "attachFile": "Załącz plik",
+    "sendMessage": "Wyślij wiadomość",
+    "clearChat": "Wyczyść cały chat",
+    "removeFile": "Usuń załączony plik",
+    "context": "Kontekst",
+    "messages": "wiadomości",
+    "contextTooltip": "Dostosuj ile poprzednich wiadomości uwzględnić w kontekście",
+    "tokensUsed": "Użyte tokeny",
+    "resetTokens": "Resetuj licznik tokenów",
+    "botGenerating": "Bot generuje odpowiedź...",
+    "you": "Ty",
+    "aiAssistant": "Asystent AI",
+    "input": "Wejście",
+    "output": "Wyjście",
+    "total": "Razem",
+    "fileSupports": "Obsługuje",
+    "fileSupportsImages": "Obrazy, DOCX, PPTX, EPUB, RTF, ODT, BibTeX, EndNote, Jupyter, LaTeX, OPML, Troff, DokuWiki",
+    "fileSupportsJsonl": "JSONL",
+    "language": "Język"
+  },
+  "Models": {
+    "gemini": "Gemini 2.5 Flash",
+    "geminiDescription": "Szybki i wydajny model AI",
+    "mistral": "Mistral 3.2 Small",
+    "mistralDescription": "Kompaktowy i potężny model"
+  },
+  "Languages": {
+    "en": "Angielski",
+    "pl": "Polski"
+  }
+}
