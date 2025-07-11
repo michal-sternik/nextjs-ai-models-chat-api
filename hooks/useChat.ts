@@ -21,12 +21,16 @@ export const useChat = (selectedModel: string) => {
     setNumberOfPreviousMessagesAttached,
   ] = useState<number>(SAVE_MAX_MESSAGES);
   const t = useTranslations("ChatbotWidget");
+
   useEffect(() => {
     const savedMessages = localStorage.getItem(`chatMessages-${selectedModel}`);
-    if (savedMessages) {
+    console.log(selectedModel);
+    if (savedMessages && JSON.parse(savedMessages).length > 0) {
+      console.log("Loading saved messages:", savedMessages);
       setMessages(JSON.parse(savedMessages));
     } else if (selectedModel.startsWith("chatbot-")) {
-      // Add welcome message for chatbot
+      //add welcome message for chatbot
+      console.log("Setting welcome message for chatbot model");
       const welcomeMessage = {
         id: `welcome-${Date.now()}`,
         sender: "bot" as const,
@@ -35,6 +39,7 @@ export const useChat = (selectedModel: string) => {
       };
       setMessages([welcomeMessage]);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedModel]);
 
   //we have to use useRef to avoid saving the empty state on the first render

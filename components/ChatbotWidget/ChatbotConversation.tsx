@@ -31,15 +31,15 @@ const ChatbotConversation = ({
           }`}
         >
           <Avatar
-            className={`w-6 h-6 ${
+            className={`size-6 ${
               msg.sender === "user" ? "bg-blue-600" : "bg-gray-600"
             }`}
           >
             <AvatarFallback className="text-white bg-transparent">
               {msg.sender === "user" ? (
-                <User className="w-3 h-3" />
+                <User className="size-3" />
               ) : (
-                <Bot className="w-3 h-3" />
+                <Bot className="size-3" />
               )}
             </AvatarFallback>
           </Avatar>
@@ -75,20 +75,20 @@ const ChatbotConversation = ({
 
       {isLoading && (
         <div className="flex gap-2">
-          <Avatar className="w-6 h-6 bg-gray-600">
+          <Avatar className="size-6 bg-gray-600">
             <AvatarFallback className="text-white bg-transparent">
-              <Bot className="w-3 h-3" />
+              <Bot className="size-3" />
             </AvatarFallback>
           </Avatar>
           <div className="bg-gray-100 p-2 rounded-lg">
             <div className="flex gap-1">
-              <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+              <div className="size-2 bg-gray-400 rounded-full animate-bounce"></div>
               <div
-                className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
+                className="size-2 bg-gray-400 rounded-full animate-bounce"
                 style={{ animationDelay: "0.1s" }}
               ></div>
               <div
-                className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
+                className="size-2 bg-gray-400 rounded-full animate-bounce"
                 style={{ animationDelay: "0.2s" }}
               ></div>
             </div>
