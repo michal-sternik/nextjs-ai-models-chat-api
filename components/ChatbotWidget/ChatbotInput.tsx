@@ -26,8 +26,8 @@ interface ChatbotInputProps {
     file?: File
   ) => void;
   isLoading?: boolean;
-  file?: File | null;
-  handleFileSelection: (file: File | null) => void;
+  file?: File;
+  handleFileSelection: (file: File | undefined) => void;
   selectedModel: string;
   clearChat: () => void;
 }
@@ -44,7 +44,7 @@ const ChatbotInput = ({
   const t = useTranslations("ChatbotWidget");
   const handleSend = () => {
     if (input.trim() || file) {
-      sendMessage(input, setInput, file || undefined);
+      sendMessage(input, setInput, file);
     }
   };
 
@@ -72,7 +72,7 @@ const ChatbotInput = ({
             </Badge>
           </div>
           <Button
-            onClick={() => handleFileSelection(null)}
+            onClick={() => handleFileSelection(undefined)}
             size="sm"
             variant="ghost"
             className="text-blue-600 hover:text-blue-800 hover:bg-blue-100 h-5 w-5 p-0"
