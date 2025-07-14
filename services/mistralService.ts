@@ -77,11 +77,7 @@ export const sendMistralMessage = async (
       });
     } catch (e) {
       console.error("File upload failed:", e);
-      // throw new Error(
-      // `File upload failed: ${file?.name ?? ""} ${
-      //   e instanceof Error ? e.message : String(e)
-      // }`
-      // );
+      //fallback to extracting text from the file if upload fails
       return await sendExtractedFileAsPrompt(conversationHistory, input, file);
     }
 
@@ -215,5 +211,5 @@ async function extractTextFromFile(file: File): Promise<string> {
   }
 
   // Default fallback for unsupported file types
-  return "[Nieobsługiwany typ pliku lub nie można wyodrębnić tekstu]";
+  return "[Unsupported file type or cannot extract text]";
 }
