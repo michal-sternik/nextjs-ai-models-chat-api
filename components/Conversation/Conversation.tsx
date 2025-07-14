@@ -54,11 +54,7 @@ const Conversation = ({ messages }: { messages: Message[] }) => {
             </AvatarFallback>
           </Avatar>
 
-          <div
-            className={`flex-1 max-w-[80%] ${
-              isUser(msg.sender) ? "text-right" : "text-left"
-            }`}
-          >
+          <div className="flex-1 max-w-[80%]  text-left">
             <Card
               className={`p-4 ${
                 isUser(msg.sender)
@@ -83,7 +79,7 @@ const Conversation = ({ messages }: { messages: Message[] }) => {
                   {isBot(msg.sender) ? (
                     <ReactMarkdown>{msg.text}</ReactMarkdown>
                   ) : (
-                    <p className="whitespace-pre-wrap text-left">{msg.text}</p>
+                    <p className="whitespace-pre-wrap">{msg.text}</p>
                   )}
                 </div>
 

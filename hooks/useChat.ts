@@ -24,13 +24,12 @@ export const useChat = (selectedModel: string) => {
 
   useEffect(() => {
     const savedMessages = localStorage.getItem(`chatMessages-${selectedModel}`);
-    console.log(selectedModel);
+
     if (savedMessages && JSON.parse(savedMessages).length > 0) {
-      console.log("Loading saved messages:", savedMessages);
       setMessages(JSON.parse(savedMessages));
     } else if (selectedModel.startsWith("chatbot-")) {
       //add welcome message for chatbot
-      console.log("Setting welcome message for chatbot model");
+
       const welcomeMessage = {
         id: `welcome-${Date.now()}`,
         sender: "bot" as const,

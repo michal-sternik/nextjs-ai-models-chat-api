@@ -5,6 +5,8 @@ import type { Message } from "../../types/types";
 import ReactMarkdown from "react-markdown";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { User, Bot } from "lucide-react";
+import { isUser } from "@/lib/utils";
+import { isBot } from "@/lib/utils";
 
 interface ChatbotConversationProps {
   messages: Message[];
@@ -27,16 +29,16 @@ const ChatbotConversation = ({
         <div
           key={msg.id}
           className={`flex gap-2 ${
-            msg.sender === "user" ? "flex-row-reverse" : "flex-row"
+            isUser(msg.sender) ? "flex-row-reverse" : "flex-row"
           }`}
         >
           <Avatar
             className={`size-6 ${
-              msg.sender === "user" ? "bg-blue-600" : "bg-gray-600"
+              isUser(msg.sender) ? "bg-blue-600" : "bg-gray-600"
             }`}
           >
             <AvatarFallback className="text-white bg-transparent">
-              {msg.sender === "user" ? (
+              {isUser(msg.sender) ? (
                 <User className="size-3" />
               ) : (
                 <Bot className="size-3" />
@@ -44,19 +46,15 @@ const ChatbotConversation = ({
             </AvatarFallback>
           </Avatar>
 
-          <div
-            className={`max-w-[80%] ${
-              msg.sender === "user" ? "text-right" : "text-left"
-            }`}
-          >
+          <div className="max-w-[80%]  text-left">
             <div
               className={`p-2 rounded-lg text-sm ${
-                msg.sender === "user"
+                isUser(msg.sender)
                   ? "bg-blue-600 text-white ml-auto"
                   : "bg-gray-300 text-gray-800"
               }`}
             >
-              {msg.sender === "bot" ? (
+              {isBot(msg.sender) ? (
                 <ReactMarkdown>{msg.text}</ReactMarkdown>
               ) : (
                 <p className="whitespace-pre-wrap text-left">{msg.text}</p>
